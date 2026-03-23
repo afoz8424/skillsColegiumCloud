@@ -16,14 +16,17 @@ Este skill se encarga de navegar y entender la información técnica contenida e
 - Navega directamente a `https://intranet.colegium.com/tickets`.
 
 ### 2. Localización por ID
-- Busca el campo de entrada (`input`) con el ID `filtro_idticket`.
-- Escribe el número de ticket que se menciona en el prompt en dicho campo.
-- Haz clic en el botón de **"Buscar"**.
+- **¡IMPORTANTE! Contexto de Iframe**: La interfaz de búsqueda está dentro de un iframe. Primero, debes cambiar el contexto (switch frame) al iframe principal de la página (su origen suele ser `intranet4backend.colegium.com/intranet4.html`).
+- Busca el campo de entrada (`input`) con el ID `filtro_idticket` dentro del iframe.
+- Escribe el número de ticket que se menciona en el prompt en dicho campo (Ej. 454501).
+- Haz clic en el botón de **"Buscar"** (usualmente un `<button>` con la clase `boton` al lado del input).
+- **Espera**: El proceso de búsqueda es asíncrono. Espera un par de segundos a que la tabla se actualice.
 
 ### 3. Apertura del Ticket
-- Una vez cargados los resultados, busca la fila (o elemento) con el ID `ticket_#ID_DEL_TICKET` (donde #ID_DEL_TICKET es el número buscado).
-- Haz clic sobre esta fila para abrir los detalles del ticket.
-- El sistema cargará la información en una nueva pestaña (tab).
+- Una vez cargados los resultados, busca la celda `<td>` con el ID `ticket_#ID_DEL_TICKET` (donde #ID_DEL_TICKET es el número buscado, ej. `ticket_454501`).
+- Haz clic directamente sobre esa celda (o la fila `<tr>` que la contiene) para abrir los detalles del ticket.
+- El sistema NO cambiará de página, sino que abrirá una **nueva viñeta/pestaña (tab)** dentro de la misma interfaz de la intranet con el título "Ticket - #ID_DEL_TICKET". Asegúrate de enfocar tu lectura en ese nuevo tab.
+
 
 ### 4. Extracción de Información Crítica
 - Una vez abierto, revisa y extrae los siguientes puntos:
