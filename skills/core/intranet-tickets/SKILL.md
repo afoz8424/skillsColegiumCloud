@@ -16,13 +16,14 @@ Este skill se encarga de navegar y entender la información técnica contenida e
 - Navega directamente a `https://intranet.colegium.com/tickets`.
 
 ### 2. Localización por ID
-- Identifica el campo de entrada (`input`) para búsqueda por ID de ticket.
-- Ingresa el número de ticket proporcionado por el usuario.
-- Haz clic en el botón **"Buscar"**.
+- Busca el campo de entrada (`input`) con el ID `filtro_idticket`.
+- Escribe el número de ticket que se menciona en el prompt en dicho campo.
+- Haz clic en el botón de **"Buscar"**.
 
 ### 3. Apertura del Ticket
-- Entre los resultados devueltos, haz clic en la línea de respuesta correspondiente para abrir el contenido detallado.
-- El sistema cargará el ticket en una nueva pestaña (tab) dentro del navegador.
+- Una vez cargados los resultados, busca la fila (o elemento) con el ID `ticket_#ID_DEL_TICKET` (donde #ID_DEL_TICKET es el número buscado).
+- Haz clic sobre esta fila para abrir los detalles del ticket.
+- El sistema cargará la información en una nueva pestaña (tab).
 
 ### 4. Extracción de Información Crítica
 - Una vez abierto, revisa y extrae los siguientes puntos:
