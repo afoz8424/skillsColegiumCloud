@@ -19,8 +19,8 @@ Este skill se encarga de navegar y entender la información técnica contenida e
 - **¡IMPORTANTE! Contexto de Iframe**: La interfaz de búsqueda está dentro de un iframe. Primero, debes cambiar el contexto (switch frame) al iframe principal de la página (su origen suele ser `intranet4backend.colegium.com/intranet4.html`).
 - Busca el campo de entrada (`input`) con el ID `filtro_idticket` dentro del iframe.
 - Escribe el número de ticket que se menciona en el prompt en dicho campo (Ej. 454501).
-- Haz clic en el botón de **"Buscar"** (usualmente un `<button>` con la clase `boton` al lado del input).
-- **Espera**: El proceso de búsqueda es asíncrono. Espera un par de segundos a que la tabla se actualice.
+- **Para ejecutar la búsqueda, PRESIONA LA TECLA ENTER** mientras el foco sigue en el input (es más confiable que buscar el botón).
+- **Espera**: El proceso de búsqueda es asíncrono. Espera un par de segundos a que la tabla se actualice e imprima los resultados.
 
 ### 3. Apertura del Ticket
 - Una vez cargados los resultados, busca la celda `<td>` con el ID `ticket_#ID_DEL_TICKET` (donde #ID_DEL_TICKET es el número buscado, ej. `ticket_454501`).
