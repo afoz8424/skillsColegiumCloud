@@ -18,13 +18,15 @@ Este workflow detalla el proceso paso a paso para resolver un ticket utilizando 
      - *¿En qué ambiente se desea replicar (ej. Local, Beta, Prod)?*
      - *¿Cuál es el ID del colegio donde se debe replicar?*
      - *¿Cuál es el correo o identificación del usuario con el cual se requiere hacer la réplica?*
-   - Una vez obtenidos, usa el skill `app-replicator` para configurar la sesión.
+     - *¿Cuál es el rol del usuario con el cual se quiere hacer la réplica del caso?*
+   - Una vez obtenidos, realiza una validación al momento de ingresar al sistema con el usuario de réplica: en caso de que el rol del usuario logeado sea igual al rol con el que se desea hacer la réplica y esto mismo suceda con el ID del colegio, el sistema no debe intentar hacer el cambio de colegio y/o rol.
+   - Usa el skill `app-replicator` para configurar la sesión.
 
 ## FASE 3: Desarrollo
 6. **Resolución del Caso**:
    - Basado en si es un Defecto o un Requerimiento, usa opcionalmente los skills analíticos (`bug-fixer` o `requirement-handler`) para planificar tu solución.
    - Procede a generar y probar los cambios/ajustes a nivel de código.
-7. **Generar el Commit**: Una vez validados todos los cambios localmente, realiza el `git add` y el `git commit` describiendo claramente los ajustes realizados en la rama temporal.
+7. **Generar el Commit**: Una vez validados todos los cambios localmente, **INTERACCIÓN REQUERIDA**: pregunta al usuario si está de acuerdo con los cambios efectuados en la rama antes de hacer commit. Solo al obtener su aprobación, realiza el `git add` y el `git commit` describiendo claramente los ajustes realizados en la rama temporal.
 
 ## FASE 4: Documentación y Cierre
 8. **Documentar el Ticket**: 
