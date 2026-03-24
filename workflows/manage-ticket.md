@@ -14,10 +14,10 @@ Este workflow detalla el proceso paso a paso para resolver un ticket utilizando 
 ## FASE 2: Entorno y Réplica
 4. **Preparar la Rama de Trabajo**: Usa el skill `git-branch-manager` para asegurar que el repositorio local esté actualizado (`main`) y crea la rama de trabajo `temporal_#IDTICKET` **ANTES** de empezar a modificar código.
 5. **Replicar el Caso**:
-   - **INTERACCIÓN REQUERIDA**: Pídele al usuario que te confirme los siguientes 3 datos obligatorios para la réplica si no están claros en el ticket:
+   - **INTERACCIÓN REQUERIDA**: Para evitar confusiones, realiza las siguientes preguntas obligatorias al usuario para configurar la réplica:
      - *¿En qué ambiente se desea replicar (ej. Local, Beta, Prod)?*
-     - *¿Cuál es el email del usuario y con qué rol se debe replicar?*
      - *¿Cuál es el ID del colegio donde se debe replicar?*
+     - *¿Cuál es el correo o identificación del usuario con el cual se requiere hacer la réplica?*
    - Una vez obtenidos, usa el skill `app-replicator` para configurar la sesión.
 
 ## FASE 3: Desarrollo
@@ -27,7 +27,13 @@ Este workflow detalla el proceso paso a paso para resolver un ticket utilizando 
 7. **Generar el Commit**: Una vez validados todos los cambios localmente, realiza el `git add` y el `git commit` describiendo claramente los ajustes realizados en la rama temporal.
 
 ## FASE 4: Documentación y Cierre
-8. **Documentar el Ticket**: Usa el skill `ticket-documenter` para leer los cambios del commit (o diff) y redactar el borrador de resolución según los 2 modelos preestablecidos (Defecto o Requerimiento). Solicita aprobación del usuario sobre el texto generado.
+8. **Documentar el Ticket**: 
+   - Usa el skill `ticket-documenter` para leer los cambios del commit (o diff) y redactar el borrador de resolución según los 2 modelos preestablecidos (Defecto o Requerimiento).
+   - **INTERACCIÓN REQUERIDA**: Antes de proceder a guardar la información en el ticket, muestra los comentarios redactados y pregunta: *¿Estás de acuerdo con los comentarios registrados?*. Solo continúa si el usuario confirma.
 9. **Derivar y Gestionar en la Intranet**:
-   - **INTERACCIÓN REQUERIDA**: Pide al usuario el nombre del QA responsable al que se le derivará.
-   - Usa el skill `ticket-qa-derivator` para ir a la sección "Gestión del ticket", cambiar el responsable al QA proveído, y actualizar el Estado General a "Corregido" o "Implementado".
+   - **INTERACCIÓN REQUERIDA**: Realiza las siguientes preguntas obligatorias:
+     - *¿A qué QA se le derivará el ticket?*
+     - *¿En qué ambiente se integró el cambio realizado?*
+   - Usa el skill `ticket-qa-derivator` para:
+     - Asegurar que en la estructura de respuesta del ticket aparezca **Integrado a:** seguido del ambiente indicado.
+     - Ir a la sección "Gestión del ticket", cambiar el responsable al QA proveído, y actualizar el Estado General a "Corregido" o "Implementado".
