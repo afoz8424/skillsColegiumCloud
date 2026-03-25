@@ -47,7 +47,7 @@ Este skill permite realizar el marcado oficial de la asistencia del trabajador d
     - **`uuid_usuario`**: El UUID personal del usuario (encontrado en `.env` como `INTRANET_UUID`).
     - **`marcacion`**: Fecha y hora actual en formato `YYYY-MM-DD HH:mm:ss`.
     - **`ipLocal`**: Dirección IP **pública** del dispositivo.
-    - **`idpersona`**: ID del usuario devuelto en el login API (ej: `825`).
+    - **`id_usuario`**: ID del usuario devuelto en el login API (anteriormente idpersona, ej: `825`).
 - **Lógica Automática**: El sistema identifica automáticamente el tipo de marcación faltante.
 - **Respuesta**: "Marcación generada con éxito" en el mensaje o 200 OK.
 
