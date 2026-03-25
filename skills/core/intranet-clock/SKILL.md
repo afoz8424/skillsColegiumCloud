@@ -44,7 +44,6 @@ Este skill permite realizar el marcado oficial de la asistencia del trabajador d
     - `Content-Type`: `application/json;charset=UTF-8`
 - **Parámetro `{uuid}`**: El `uuid` de sesión devuelto en el login API.
 - **Cuerpo (JSON)**:
-    - **`uuid_usuario`**: El UUID personal del usuario (encontrado en `.env` como `INTRANET_UUID`).
     - **`marcacion`**: Fecha y hora actual en formato `YYYY-MM-DD HH:mm:ss`.
     - **`ipLocal`**: Dirección IP **pública** del dispositivo.
     - **`id_usuario`**: ID del usuario devuelto en el login API (anteriormente idpersona, ej: `825`).
