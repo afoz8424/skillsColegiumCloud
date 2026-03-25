@@ -24,9 +24,11 @@ Este skill permite realizar el marcado oficial de la asistencia del trabajador d
 ### 2. Selección del Tipo de Marcado
 - Al hacer clic en "Marcaciones", se desplegará un modal pequeño.
 - Identifica y selecciona la opción correcta basada en la intención actual (pedida por el usuario o detectada por hora).
+- **CRÍTICO**: El sistema no permite registros duplicados para el mismo tipo de marcación en un mismo día. Antes de proceder a enviar, verifica si el tipo de marcación solicitado por el usuario aparece como ya registrado o deshabilitado en el modal.
+- Si el sistema indica que ya se ha realizado una marcación de ese tipo para el día de hoy, detén el proceso y notifica al usuario con un mensaje indicándolo.
 
 ### 3. Registro de Marca
-- Una vez seleccionado el tipo de marcación (Inicio, Salida almuerzo, Regreso almuerzo o Salida), localiza el botón **"Enviar marcación"**.
+- Una vez seleccionado el tipo de marcación (Inicio, Salida almuerzo, Regreso almuerzo o Salida) y validado que no es duplicada, localiza el botón **"Enviar marcación"**.
 - Haz clic en este botón para oficializar el registro.
 
 ### 4. Confirmación
