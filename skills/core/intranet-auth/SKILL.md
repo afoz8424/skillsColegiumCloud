@@ -12,7 +12,7 @@ Este skill provee los mecanismos de entrada a la intranet institucional para pro
 - **Usuario**: Usa la variable `${INTRANET_USER}` del archivo `.agents/.env`.
 - **Password**: Usa la variable `${INTRANET_PASS}` del archivo `.agents/.env`.
 
-## Flujo de Login
+## Flujo de Login (Browser)
 ### 1. Navegación Inicial
 - Abre la URL base y verifica si el sistema ya tiene una sesión activa mediante la detección de elementos del dashboard.
 
@@ -24,5 +24,17 @@ Este skill provee los mecanismos de entrada a la intranet institucional para pro
 - Asegúrate de que el despliegue del menú principal o del nombre de usuario sea visible antes de reportar éxito.
 - Maneja posibles redirecciones o mensajes de error de autenticación.
 
+## Flujo de Login (API)
+- **URL**: `https://intranet4backend.colegium.com/autentica_user`
+- **Método**: POST
+- **Headers**:
+    - `Authorization`: `Basic {Base64(user:pass)}`
+    - `Content-Type`: `application/json;charset=UTF-8`
+    - `x-id-application`: `36`
+- **Body (JSON)**: `{"idAplicacion":36,"recordarDatos":false,"leoPrimero":false}`
+- **Respuesta Esperada**: JSON con `uuid`, `idpersona`, `token` y `newToken`.
+- **Datos a Rescatar**: Guarda `uuid` y `newToken` para peticiones de marcación.
+
 ## Notas para Subagentes
 - Este skill debe ser el primer paso siempre que se requiera acceso a cualquier otra sección de la intranet (Tickets, RRHH, Proyectos).
+- Elige el flujo (Browser o API) según el requerimiento del usuario o la naturaleza de la tarea siguiente.

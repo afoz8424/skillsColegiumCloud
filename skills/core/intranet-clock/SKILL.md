@@ -34,5 +34,22 @@ Este skill permite realizar el marcado oficial de la asistencia del trabajador d
 ### 4. Confirmación
 - Asegúrate de ver el mensaje de confirmación del sistema antes de reportar éxito.
 
+## Marcación por API (Nuevo)
+- **URL**: `https://intranet4backend.colegium.com/registrarMarcacionAutomatica/{uuid}`
+- **Método**: POST
+- **Headers**:
+    - **`x-access-token`**: `${newToken}` (obtenido del login API).
+    - **`x-id-application`**: `36`
+    - **`x-current-timestamp`**: Timestamp actual (ej: `new Date().toString()`).
+    - `Content-Type`: `application/json;charset=UTF-8`
+- **Parámetro `{uuid}`**: El `uuid` de sesión devuelto en el login API.
+- **Cuerpo (JSON)**:
+    - **`uuid_usuario`**: El UUID personal del usuario (encontrado en `.env` como `INTRANET_UUID`).
+    - **`marcacion`**: Fecha y hora actual en formato `YYYY-MM-DD HH:mm:ss`.
+    - **`ipLocal`**: Dirección IP **pública** del dispositivo.
+- **Lógica Automática**: El sistema identifica automáticamente el tipo de marcación faltante.
+- **Respuesta**: "Marcación generada con éxito" en el mensaje o 200 OK.
+
 ## Nota de Operación
-- Este skill puede usarse como una tarea aislada o como parte de un proceso automatizado de inicio/fin de día.
+- El flujo **Browser** es ideal si el usuario quiere ver el proceso o requiere validación visual previa.
+- El flujo **API** es más rápido y eficiente para automatizaciones, ya que el servidor elige el tipo de marcación correcto.
