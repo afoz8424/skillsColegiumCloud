@@ -9,8 +9,8 @@ Este skill provee los mecanismos de entrada a la intranet institucional para pro
 
 ## Credenciales y Acceso
 - **URL Base**: `https://intranet.colegium.com/`
-- **Usuario**: Usa la variable `${INTRANET_USER}` del archivo `.agents/.env`.
-- **Password**: Usa la variable `${INTRANET_PASS}` del archivo `.agents/.env`.
+- **Usuario**: Usa la variable `${INTRANET_USER}` del archivo `.env` (raíz del repositorio).
+- **Password**: Usa la variable `${INTRANET_PASS}` del archivo `.env` (raíz del repositorio).
 
 ## Flujo de Login (Browser)
 ### 1. Navegación Inicial

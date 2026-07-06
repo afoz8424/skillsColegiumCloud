@@ -50,6 +50,16 @@ Este skill permite realizar el marcado oficial de la asistencia del trabajador d
 - **Lógica Automática**: El sistema identifica automáticamente el tipo de marcación faltante.
 - **Respuesta**: "Marcación generada con éxito" en el mensaje o 200 OK.
 
+### Cómo obtener los valores dinámicos (para ejecución desatendida/programada)
+- **`ipLocal`**: Consulta un servicio externo antes de cada marcación, ej. `curl -s https://api.ipify.org`. No asumas ni cachees una IP fija, ya que puede cambiar entre ejecuciones.
+- **`x-current-timestamp`**: Genera el valor exactamente con `new Date().toString()`. Si hay Node.js disponible, ejecuta `node -e "console.log(new Date().toString())"`. Si no, replica el mismo formato (`Ddd Mmm DD YYYY HH:mm:ss GMT±HHMM (Zona horaria)`) con las herramientas disponibles.
+
+### Manejo de duplicados en el flujo API
+- El comportamiento exacto del endpoint ante una marcación ya registrada para el día **aún no está confirmado/documentado**. Al recibir la respuesta:
+    - Si el mensaje indica éxito ("Marcación generada con éxito" o 200 OK), reporta éxito normalmente.
+    - Si el mensaje o status indican error relacionado con una marca ya existente/duplicada para el tipo correspondiente, **no lo trates como una falla del proceso**: repórtalo como informativo (ya se había marcado) y no reintentes.
+    - Ante cualquier otro error, detén el proceso y notifica el mensaje exacto devuelto por el servidor para poder documentarlo aquí en una próxima iteración.
+
 ## Nota de Operación
 - El flujo **Browser** es ideal si el usuario quiere ver el proceso o requiere validación visual previa.
 - El flujo **API** es más rápido y eficiente para automatizaciones, ya que el servidor elige el tipo de marcación correcto.
