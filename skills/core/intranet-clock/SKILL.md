@@ -60,6 +60,12 @@ Este skill permite realizar el marcado oficial de la asistencia del trabajador d
     - Si el mensaje o status indican error relacionado con una marca ya existente/duplicada para el tipo correspondiente, **no lo trates como una falla del proceso**: repórtalo como informativo (ya se había marcado) y no reintentes.
     - Ante cualquier otro error, detén el proceso y notifica el mensaje exacto devuelto por el servidor para poder documentarlo aquí en una próxima iteración.
 
+### Script automatizado (recomendado para tareas programadas)
+- `scripts/marcar_automatico.sh` (en esta misma carpeta) encapsula todo el flujo API: lee `INTRANET_USER`/`INTRANET_PASS` del `.env` en la raíz del repo, hace login, obtiene la IP pública, genera el timestamp y hace el POST de marcación.
+- Uso: `bash skills/core/intranet-clock/scripts/marcar_automatico.sh` desde la raíz del repositorio. No recibe argumentos — el servidor detecta automáticamente el tipo de marcación según la hora.
+- Salida: JSON de respuesta del endpoint de marcación seguido de `___HTTP_STATUS___:<codigo>`. Códigos de salida propios: `3` (falta `.env` o credenciales vacías), `4` (login fallido; imprime `ERROR_LOGIN: <respuesta>`).
+- Usar este script en vez de reconstruir los comandos curl/node manualmente hace que las tareas programadas (entrada, salida a almorzar, regreso de almuerzo, salida) siempre invoquen exactamente el mismo comando, lo que permite dar permiso de allowlist una sola vez sin pedir aprobación en cada ejecución.
+
 ## Nota de Operación
 - El flujo **Browser** es ideal si el usuario quiere ver el proceso o requiere validación visual previa.
 - El flujo **API** es más rápido y eficiente para automatizaciones, ya que el servidor elige el tipo de marcación correcto.
